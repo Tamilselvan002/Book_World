@@ -1,0 +1,32 @@
+<section class="add-book-section">
+  <h2>Add a New Book</h2>
+
+  {{#if msg}}
+    <div class="alert">{{msg}}</div>
+  {{/if}}
+
+  <form class="add-book-form" action="/adduser" method="POST">
+    <label for="title">Book Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="price">Price (₹):</label>
+    <input type="number" id="price" name="price" required>
+
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" name="image" required>
+
+    <label for="summary">Book Summary:</label>
+    <textarea id="summary" name="summary" rows="5" required></textarea>
+
+    <button type="submit" class="submit-btn">Add Book</button>
+
+    <div class="aded">
+    <div class="add">
+      <p class="addbtn"><a href="/books">View All</a></p>
+    </div>
+  </form>
+</section>
+

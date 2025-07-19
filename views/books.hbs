@@ -1,0 +1,24 @@
+<section class="main">
+  <h1>Available Books</h1>
+
+  <div class="book-grid">
+    {{#each don}}
+    <div class="book-card">
+      <img src="/images/{{this.IMAGES}}" alt="{{this.BNAME}}" />
+      <h3>{{this.BNAME}}</h3>
+      <p><strong>Author:</strong> {{this.BAUTHOR}}</p>
+      <p><strong>Price:</strong> ₹{{this.PRICE}}</p>
+      <p class="summary"><strong>Summary:</strong> {{this.summary}}</p>
+
+      <div class="action-buttons">
+        <a href="/edituser/{{this.ID}}" class="edit-btn" style="text-decoration: none; color:#fff;">Edit</a>
+        <a href="/deleteuser/{{this.ID}}" class="delete-btn" style="text-decoration: none; color:#fff;">Delete</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="add-book-container">
+    <a href="/adduser" class="add-btn" style="text-decoration: none; color:#fff;">Add New Book</a>
+  </div>
+</section>

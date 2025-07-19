@@ -1,0 +1,162 @@
+<style>
+  .header {
+  background-color: #6a1b9a;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbar a {
+  color: white;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: #ffca28;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #6a1b9a;
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 3rem;
+}
+
+.add-book-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.add-book-section h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+.alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-book-form label {
+  font-weight: 600;
+  color: #333;
+}
+
+.add-book-form input,
+.add-book-form textarea {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.add-book-form input:focus,
+.add-book-form textarea:focus {
+  border-color: #4b7bec;
+  outline: none;
+}
+
+.submit-btn {
+  padding: 12px;
+  background: linear-gradient(to right, #4b7bec, #3867d6);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(to right, #3867d6, #4b7bec);
+}
+
+.aded {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.addbtn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2d98da;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.addbtn a:hover {
+  background-color: #227093;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+<section class="add-book-section">
+  <h2>Edit Book</h2>
+
+  {{#if msg}}
+    <div class="alert">{{msg}}</div>
+  {{/if}}
+    {{#each card}}
+  <form class="add-book-form" action="/edituser/{{this.ID}}" method="POST">
+    <label for="title">Book Title:</label>
+    <input type="text" id="title" name="title" value="{{this.BNAME}}" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" value="{{this.BAUTHOR}}" required>
+
+    <label for="price">Price (₹):</label>
+    <input type="number" id="price" name="price" value="{{this.PRICE}}" required>
+
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" name="image" value="{{this.IMAGES}}" required>
+
+    <label for="summary">Book Summary:</label>
+    <textarea id="summary" name="summary" rows="5" required>{{this.summary}}</textarea>
+
+    <button type="submit" class="submit-btn">Edit Book</button>
+
+    <div class="aded">
+    <div class="add">
+      <p class="addbtn"><a href="/books">View All</a></p>
+    </div>
+  </form>
+  {{/each}}
+</section>
+

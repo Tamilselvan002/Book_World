@@ -1,0 +1,22 @@
+<section class="hero">
+  <h1>Welcome to BookWorld</h1>
+  <p>Your one-stop destination for books of every kind.</p>
+  <a href="/books" class="btn">Shop Now</a>
+</section>
+
+<section class="featured">
+  <h2>Featured Books</h2>
+  <div class="book-grid">
+
+    {{#each card}}
+    <div class="book-card">
+      <img src="/images/{{this.IMAGES}}" alt="{{this.BNAME}}" />
+      <h3>{{this.BNAME}}</h3>
+      <p>By : {{this.BAUTHOR}}</p> 
+       <p class="summary">{{this.summary}}</p> <!-- Book summary added here -->
+      <span>₹{{this.PRICE}}</span>
+    </div>
+    {{/each}}
+
+  </div>
+</section>
