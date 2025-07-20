@@ -1,6 +1,10 @@
 <section class="main">
   <h1>Login</h1>
 
+   {{#if msg}}
+    <div class="alert">{{msg}}</div>
+  {{/if}}
+
   <form action="/login" method="POST" style="max-width: 400px;">
     <label for="email">Email:</label><br />
     <input type="email" id="email" name="email" required /><br /><br />

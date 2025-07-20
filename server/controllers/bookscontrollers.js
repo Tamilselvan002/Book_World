@@ -119,3 +119,53 @@ exports.delete = (req, res) => {
   });
 };
 
+exports.register = (req,res)=>{
+  res.render("register")
+}
+
+exports.reg = (req, res) => {
+  conn.getConnection((err, connection) => {
+    if (err) throw err;
+    const { name,email,password } = req.body; // ✅ include summary
+    connection.query(
+      "INSERT INTO details (name, email, password) VALUES (?, ?, ?)",
+      [name,email,password], // ✅ pass summary here
+      (err, card) => {
+        connection.release();
+        if (!err) {
+          res.render("register", { msg: "Registered Successfully" });
+        } else {
+          console.log("Insert Error:", err);
+          res.render("register", { msg: "Wrong Details" });
+        }
+      }
+    );
+  });
+};
+
+exports.login = (req,res)=>{
+  res.render("login")
+}
+
+exports.log = (req, res) => {
+  const { email, password } = req.body;
+
+  conn.query('SELECT * FROM details WHERE email = ?', [email], (err, result) => {
+    if (err) throw err;
+
+    if (result.length === 0) {
+      return res.render('login', { msg: 'Invalid Email or Password' });
+    }
+
+    const user = result[0];
+
+    // Plain text comparison
+    if (user.password === password) {
+      // Login success
+      res.redirect('/dashboard');
+    } else {
+      // Password incorrect
+      res.render('login', { msg: 'Invalid Email or Password' });
+    }
+  });
+};

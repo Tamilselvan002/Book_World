@@ -1,6 +1,10 @@
 <section class="main">
   <h1>Register</h1>
 
+  {{#if msg}}
+    <div class="alert">{{msg}}</div>
+  {{/if}}
+
   <form action="/register" method="POST" style="max-width: 400px;">
     <label for="name">Name:</label><br />
     <input type="text" id="name" name="name" required /><br /><br />
@@ -13,4 +17,7 @@
 
     <button type="submit" class="btn">Register</button>
   </form>
+  <p style="margin-top: 1rem;">
+    I have an account !  <a href="/login">Login here</a>
+  </p>
 </section>
