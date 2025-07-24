@@ -122,6 +122,11 @@ Go to http://localhost:10000
 
 🔗 https://book-world-nrv7.onrender.com
 
+🙋‍♂️ Author
+Tamilselvan S
+
+GitHub: @Tamilselvan002
+
 📸 Screenshots (Optional)
 You can add screenshots of your project pages here:
 
@@ -140,9 +145,3 @@ Contact Page
 ![image alt]()
 About
 ![image alt]()
-
-🙋‍♂️ Author
-Tamilselvan S
-
-GitHub: @Tamilselvan002
-
